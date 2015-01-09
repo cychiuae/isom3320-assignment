@@ -121,29 +121,4 @@ public class Class {
 			}
 		});
 	}
-	
-	public int getAsg1Percentage() {
-		return asg1Percentage;
-	}
-	public void setAsg1Percentage(int asg1Percentage) {
-		this.asg1Percentage = asg1Percentage;
-	}
-	public int getAsg2Percentage() {
-		return asg2Percentage;
-	}
-	public void setAsg2Percentage(int asg2Percentage) {
-		this.asg2Percentage = asg2Percentage;
-	}
-	public int getMidtermPercentage() {
-		return midtermPercentage;
-	}
-	public void setMidtermPercentage(int midtermPercentage) {
-		this.midtermPercentage = midtermPercentage;
-	}
-	public int getFinalPercentage() {
-		return finalPercentage;
-	}
-	public void setFinalPercentage(int finalPercentage) {
-		this.finalPercentage = finalPercentage;
-	}
 }
