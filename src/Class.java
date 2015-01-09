@@ -30,6 +30,25 @@ public class Class {
 		return (float)((s.getAsg1Score() * this.asg1Percentage + s.getAsg2Score() * this.asg2Percentage + s.getMidtermScore() * this.midtermPercentage + s.getFinalScore() * this.finalPercentage) / 100.0);
 	}
 	
+	public void rankTheStudents() {
+		int rank = 1;
+		
+		for(Student s : this.students) {
+			int indexOfStudent = this.students.indexOf(s);
+			
+			if(indexOfStudent == 0) {
+				s.setRank(rank);
+			}
+			else if(this.calculateStudentOverallScore(s) == this.calculateStudentOverallScore(this.students.get(indexOfStudent - 1))){
+				s.setRank(rank);
+			}
+			else {
+				rank = indexOfStudent + 1;
+				s.setRank(rank);
+			}
+		}
+	}
+	
 	public void readStudentData(String fileLocation) {
 		BufferedReader in;
 		
@@ -51,7 +70,7 @@ public class Class {
 			assignmentName.add(firstLineData[8]);
 			finalPercentage = Integer.parseInt(firstLineData[9]);
 			
-			String line;
+			String line = null;
 			while((line = in.readLine()) != null) {
 				String[] lineData = line.split(", ");
 				Student student = new Student(lineData[0], lineData[1]);
@@ -88,7 +107,7 @@ public class Class {
 			totalFinalScore += s.getFinalScore();
 			totalOverallScore += overallScore;
 			
-			System.out.printf("%s\t%s\t\t%.1f\t%.1f\t%.1f\t%.1f\t%.1f\t%d\n", s.getStudentId(), s.getName(), s.getAsg1Score(), s.getAsg2Score(), s.getMidtermScore(), s.getFinalScore(), overallScore, students.indexOf(s) + 1);
+			System.out.printf("%s\t%s\t\t%.1f\t%.1f\t%.1f\t%.1f\t%.1f\t%d\n", s.getStudentId(), s.getName(), s.getAsg1Score(), s.getAsg2Score(), s.getMidtermScore(), s.getFinalScore(), overallScore, s.getRank());
 		}
 		
 		averageAsg1Score = totalAsg1Score / this.students.size();
@@ -102,7 +121,6 @@ public class Class {
 	
 	public void sortTheStudent() {
 		this.students.sort(new Comparator<Student>() {
-
 			@Override
 			public int compare(Student o1, Student o2) {
 				// TODO Auto-generated method stub

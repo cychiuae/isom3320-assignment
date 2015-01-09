@@ -2,6 +2,7 @@
 public class Student {
 	private String studentId;
 	private String name;
+	private int rank;
 	private float asg1Score;
 	private float asg2Score;
 	private float midtermScore;
@@ -10,6 +11,19 @@ public class Student {
 	public Student(String studentId, String name) {
 		this.studentId = studentId;
 		this.name = name;
+		this.rank = -1;
+		this.asg1Score = 0;
+		this.asg2Score = 0;
+		this.midtermScore = 0;
+		this.finalScore = 0;
+	}
+
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 
 	public String getStudentId() {

@@ -11,6 +11,7 @@ public class Assignment1 {
 		
 		isomClass.readStudentData(fileLocation);
 		isomClass.sortTheStudent();
+		isomClass.rankTheStudents();
 		isomClass.printStudentData();
 	}
 }
