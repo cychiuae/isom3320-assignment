@@ -1,3 +1,0 @@
-[Student ID], [Student Name], Asg 1, 10, Asg 2, 10, Midterm, 40, Final, 40
-01234567, Timture Choi, 99.5, 97, 100.0, 99.0
-02345678, Elaine Tam, 89.5, 88.5, 99.0, 100

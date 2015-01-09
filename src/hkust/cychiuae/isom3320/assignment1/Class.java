@@ -10,10 +10,6 @@ import java.util.HashMap;
 public class Class {
 	private ArrayList<Student> students;
 	private AssessmentCollection assessmentCollection;
-	private int asg1Percentage;
-	private int asg2Percentage;
-	private int midtermPercentage;
-	private int finalPercentage;
 	
 	public Class() {
 		this.students = new ArrayList<Student>();
@@ -26,9 +22,13 @@ public class Class {
 	
 	public float calculateStudentOverallScore(Student s) {
 		float overallScore = 0;
+		
+		//Add up the assessment score
 		for(AssessmentSet aS : this.assessmentCollection.getAssessmentSet()) {
 			overallScore += s.getAssessmentByName(aS.getAssessmentName()).getScore() * aS.getAssessmentPercentage();
 		}
+		
+		//return the total divided by 100
 		return overallScore / 100;
 	}
 	
@@ -42,7 +42,7 @@ public class Class {
 				s.setRank(rank);
 			}
 			else if(this.calculateStudentOverallScore(s) == this.calculateStudentOverallScore(this.students.get(indexOfStudent - 1))){
-				s.setRank(rank);
+				s.setRank(rank);	//If the scores of students are same, set the rank to same
 			}
 			else {
 				rank = indexOfStudent + 1;
@@ -57,9 +57,12 @@ public class Class {
 		try {
 			in = new BufferedReader(new FileReader(fileLocation));
 			
+			//Read the first line
 			String firstLine = in.readLine();
 			String[] firstLineData = firstLine.split(",");
 			
+			
+			//Process the first line and set up the assessments of the class
 			for(int i = 2; i < firstLineData.length; i += 2) {
 				String assessmentName = firstLineData[i].trim();
 				int assessmentPercentage = Integer.parseInt(firstLineData[i + 1].trim());
@@ -67,8 +70,10 @@ public class Class {
 				this.assessmentCollection.addAddessment(assessmentSet);
 			}
 
+			//Read the rest of the file
 			String line = null;
 			while((line = in.readLine()) != null) {
+				//Process a line and set up the students data
 				String[] lineData = line.split(",");
 				Student student = new Student(lineData[0].trim(), lineData[1].trim());
 				
@@ -94,6 +99,7 @@ public class Class {
 	public void printStudentData() {		
 		float totalOverall = 0;
 		
+		//Print the header
 		System.out.printf("%-9s%-21s", "ID", "Name");
 		
 		for(AssessmentSet assessmentSet : this.assessmentCollection.getAssessmentSet()) {
@@ -106,7 +112,11 @@ public class Class {
 		
 		System.out.println();
 		
+		//Print the student records
 		for(Student s : this.students) {
+			float studentOverallScore = calculateStudentOverallScore(s);
+			totalOverall += studentOverallScore;
+			
 			System.out.printf("%-9s%-21s", s.getStudentId(), s.getName());
 			
 			for(AssessmentSet assessmentSet : this.assessmentCollection.getAssessmentSet()) {
@@ -118,9 +128,6 @@ public class Class {
 				
 				System.out.printf(format, assessmentScore);
 			}
-			
-			float studentOverallScore = calculateStudentOverallScore(s);
-			totalOverall += studentOverallScore;
 			
 			System.out.printf("%-8.1f", studentOverallScore);
 			
@@ -138,7 +145,7 @@ public class Class {
 			System.out.printf(format, assessmentSet.getClassTotal() / this.students.size());
 		}
 		
-		System.out.printf("%-8.1f", totalOverall / this.students.size());
+		System.out.printf("%-8.1f\n", totalOverall / this.students.size());
 	}
 	
 	public void sortTheStudent() {
