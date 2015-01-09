@@ -1,7 +1,9 @@
+package hkust.cychiuae.isom3320.assignment1;
 import java.util.Scanner;
 
 public class Assignment1 {
 	public static void main(String... args) {
+		//Create a class object
 		Class isomClass = new Class();
 		
 		System.out.print("Please input the file location: ");

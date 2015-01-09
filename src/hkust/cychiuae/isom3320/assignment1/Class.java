@@ -1,3 +1,4 @@
+package hkust.cychiuae.isom3320.assignment1;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

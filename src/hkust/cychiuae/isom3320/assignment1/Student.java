@@ -1,3 +1,4 @@
+package hkust.cychiuae.isom3320.assignment1;
 
 public class Student {
 	private String studentId;
