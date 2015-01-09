@@ -6,11 +6,13 @@ public class Assignment1 {
 		//Create a class object
 		Class isomClass = new Class();
 		
+		//Ask user to input the location of data file
 		System.out.print("Please input the file location: ");
 		Scanner input = new Scanner(System.in);
 		String fileLocation = input.next();
 		input.close();
 		
+		//Do some operation
 		isomClass.readStudentData(fileLocation);
 		isomClass.sortTheStudent();
 		isomClass.rankTheStudents();
