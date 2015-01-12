@@ -11,15 +11,18 @@ public class Class {
 	private ArrayList<Student> students;
 	private AssessmentCollection assessmentCollection;
 	
+	//Creating a class object
 	public Class() {
 		this.students = new ArrayList<Student>();
 		this.assessmentCollection = new AssessmentCollection();
 	}
 	
+	//Add a student to the class
 	public void addStudent(Student student) {
 		this.students.add(student);
 	}
 	
+	//A helper function that calculate the overall score of a student
 	public float calculateStudentOverallScore(Student s) {
 		float overallScore = 0;
 		
@@ -32,6 +35,8 @@ public class Class {
 		return overallScore / 100;
 	}
 	
+	//Get the rank the students in the class.
+	//Should be sorted before use this method
 	public void rankTheStudents() {
 		int rank = 1;
 		
@@ -51,6 +56,7 @@ public class Class {
 		}
 	}
 	
+	//Read the input data from a file
 	public void readStudentData(String fileLocation) {
 		BufferedReader in;
 		
@@ -96,6 +102,7 @@ public class Class {
 		}
 	}
 	
+	//Print some awesome data on the console
 	public void printStudentData() {		
 		float totalOverall = 0;
 		
@@ -148,6 +155,7 @@ public class Class {
 		System.out.printf("%-8.1f\n", totalOverall / this.students.size());
 	}
 	
+	//Sort the students in the class according o their overall score
 	public void sortTheStudent() {
 		this.students.sort(new Comparator<Student>() {
 			@Override

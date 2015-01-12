@@ -2,6 +2,11 @@ package hkust.cychiuae.isom3320.assignment1;
 import java.util.Scanner;
 
 public class Assignment1 {
+	
+	/*
+	 * The main of this assignment
+	 * */
+	
 	public static void main(String... args) {
 		//Create a class object
 		Class isomClass = new Class();
